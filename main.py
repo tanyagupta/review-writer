@@ -1,6 +1,6 @@
-import re
+import sys
 
-def main (file_name):
+def fileopen (file_name):
 
     file_content_as_string = " "
 
@@ -11,38 +11,35 @@ def main (file_name):
         return (file_content_as_string)
     except IndexError:
         print ("No file name to read")
+def parse_data(feelings,template):
+    feelings_source = feelings.split('#')
+    feelings_source.pop(0)
+    #feelings_source = [i.replace('\n','') for i in feelings_source] # use this if you want to get rid of the \n
+    tags = dict(zip(feelings_source[::2], feelings_source[1::2]))
+    template = template.split(" ")
+    #print(template) # ['I', 'chose', '<property_name>', 'because', '<reasons>
+    review=""
+    for item in template:
+        if (not item.startswith("<")):
+            review = review +" "+ item
+            #print(review)
+        else: #if item.startswith("<") and (item.endswith(">.\n") or item.endswith(">.")or item.endswith(">")):
+            item = item.strip('>.')
+            item = item.strip('>')
+            item = item.strip('>.\n')
+            item = item.strip('<')
+            review = review +tags[item]
+
+    review = review.replace('\r', '').replace('\n', '')
+    print(review)
 
 
+def main():
+    filepath1 = sys.argv[1]
+    filepath2 = sys.argv[2]
+    feelings = fileopen(filepath1)
+    template = fileopen(filepath2)
+    parse_data(feelings,template)
 
 if __name__ == '__main__':
-    feelings_name = "feelings_marriott.txt"
-    temp = main(feelings_name)
-    feelings_source = temp.split('#')
-    feelings_source.pop(0)
-    #print(feelings_source) #['JW Marriott Aerocity Delhi India ', 'Oct 10 2019 -
-    length = len(feelings_source)
-    # print(length)
-
-    template_name = "template.txt"
-    template_source = main(template_name).split(" ")
-    #print(template_source) # ['I', 'chose', '<property_name>', 'because', '<reasons>
-    count=0
-    pos = []
-    for i in template_source:
-        if (i[0]=="<"):
-            index = template_source.index(i)
-            template_source[index]=feelings_source[count]
-            #print(template_source)
-            count = count+1
-
-    full_sentence = " ".join(template_source)
-    print(full_sentence)
-    #return template_source
-
-
-
-    # positions = [];
-    # sentence = template_source;
-    # regex_search = '<[^>]+>'
-    # regex_replace = " "
-    #print(re.sub(regex_search,regex_replace,template_source))
+    main()
