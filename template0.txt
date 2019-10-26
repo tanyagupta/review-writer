@@ -1,0 +1,4 @@
+I chose <property_name>.
+Mostly because <reason>.
+My experience <experience>.
+My conclusion is <conclusion>.
