@@ -1,6 +1,6 @@
-I chose <property_name>.
-This was because <reason>.
-I stayed at the property <dates>.
-I was expecting <expectation>.
-My experience <experience>.
-My conclusion is <conclusion>.
+I chose #property_name#.
+This was because #reason#.
+I stayed at the property #dates#.
+I was expecting #expectation#.
+My experience #experience#.
+My conclusion is #conclusion#.

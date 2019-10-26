@@ -20,34 +20,56 @@ def fileopen (file_name):
 def parse_data(feelings,template):
     feelings_source = feelings.split('#')
     feelings_source.pop(0)
+    template = template.split("#")
     if "property_name" in feelings_source and "dates" in feelings_source:
-        #print(feelings_source)
-        #feelings_source = [i.replace('\n','') for i in feelings_source] # use this if you want to get rid of the \n
-        #tags = dict(zip(feelings_source[::2], feelings_source[1::2]))
-        #tags = collections.defaultdict(lambda : 'Key Not found')
-        tags = dict(zip(feelings_source[::2], feelings_source[1::2]))
-        template = template.split(" ")
-        review=""
-        for item in template:
-            if (not item.startswith("<")):
-                review = review +" "+ item
-                #print(review)
-            else: #if item.startswith("<") and (item.endswith(">.\n") or item.endswith(">.")or item.endswith(">")):
-                item = item.strip('>.')
-                item = item.strip('>')
-                item = item.strip('>.\n')
-                item = item.strip('<')
-                if item in tags:
-                    review = review +tags[item]
-                else:
-                    review = review + ""
-
+        feeling_tags = dict(zip(feelings_source[::2], feelings_source[1::2]))
+        template_tags = dict(zip(template[::2], template[1::2]))
+        template_tags = dict((v,k) for k,v in template_tags.items())
+        #print(feeling_tags.keys())
+        #print(template_tags.keys())
+        review = ""
+        for item in feeling_tags:
+            if item in template_tags:
+                print(item)
+                temp = template_tags.get(item,"")
+                feel = feeling_tags.get(item,"")
+                review = review + temp+ feel
+                #print (review)
+                #print("eol")
         review = review.replace('\r', '').replace('\n', '')
-        filename = (feelings_source[1]).strip().replace(' ','_')
-        filename = filename +".txt"
-        writefile(filename,review)
+        print(review)
     else:
-        print("error")
+         print("error")
+
+        #print(template)
+        #{'property_name': '\n JW Marriott\n ', 'dates': '\n Oct
+    #     template = template.split(" ")
+    #     review=""
+    #
+    #
+    #     for item in template:
+    #
+    #
+    #         if (not item.startswith("<")):
+    #             review = review +" "+ item
+    #
+    #         elif (item.startswith("<")):  #if item.startswith("<") and (item.endswith(">.\n") or item.endswith(">.")or item.endswith(">")):
+    #
+    #             item = item.strip('>.')
+    #             item = item.strip('>')
+    #             item = item.strip('>.\n')
+    #             item = item.strip('<')
+    #
+    #             if item in tags:
+    #                 review = review +tags[item]
+    #
+    #     review = review.replace('\r', '').replace('\n', '')
+    #     filename = (feelings_source[1]).strip().replace(' ','_')
+    #     filename = filename +".txt"
+    #     print(review)
+    #     #writefile(filename,review)
+    # else:
+    #     print("error")
 
 
 def main():

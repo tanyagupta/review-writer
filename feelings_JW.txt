@@ -1,0 +1,8 @@
+#property_name#
+JW BBB Marriott
+#dates#
+Oct 6, 2019 to Oct 7, 2019
+#expectation#
+a peaceful stay
+#conclusion#
+Do not recommend
