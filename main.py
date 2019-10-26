@@ -37,9 +37,13 @@ def parse_data(feelings,template):
                 #print (review)
                 #print("eol")
         review = review.replace('\r', '').replace('\n', '')
-        print(review)
+        filename = (feelings_source[1]).strip().replace(' ','_')
+        filename = filename +".txt"
+        #print(review)
+        writefile(filename,review)
     else:
-         print("error")
+        print("error")
+
 
         #print(template)
         #{'property_name': '\n JW Marriott\n ', 'dates': '\n Oct
