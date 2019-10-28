@@ -20,17 +20,18 @@ def fileopen (file_name):
 def parse_data(feelings,template):
     feelings_source = feelings.split('#')
     feelings_source.pop(0)
+    print(feelings_source)
     template = template.split("#")
     if "property_name" in feelings_source and "dates" in feelings_source:
         feeling_tags = dict(zip(feelings_source[::2], feelings_source[1::2]))
         template_tags = dict(zip(template[::2], template[1::2]))
         template_tags = dict((v,k) for k,v in template_tags.items())
-        #print(feeling_tags.keys())
+        print(feeling_tags.keys())
         #print(template_tags.keys())
         review = ""
         for item in feeling_tags:
             if item in template_tags:
-                print(item)
+               #print(item)
                 temp = template_tags.get(item,"")
                 feel = feeling_tags.get(item,"")
                 review = review + temp+ feel
