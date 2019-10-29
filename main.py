@@ -39,7 +39,7 @@ def parse_data(feelings,template):
                 #print("eol")
         review = review.replace('\r', '').replace('\n', '')
         filename = (feelings_source[1]).strip().replace(' ','_')
-        filename = filename +".txt"
+        filename = "review_"+filename.lower() +".txt"
         #print(review)
         writefile(filename,review)
     else:
