@@ -20,14 +20,33 @@ def fileopen (file_name):
 def parse_data(feelings,template):
     feelings_source = feelings.split('#')
     feelings_source.pop(0)
-    print(feelings_source)
+    #print(feelings_source)
+    max_feel=len(feelings_source)-1
+    sorted_items={}
+    for i in range(0,max_feel):
+        sorted_items[feelings_source[i]] = feelings_source[i+1]
+
     template = template.split("#")
+    #print(template)
+
+    sorted_items_template = {}
+    max_temp = len(template)-1
+    for i in range(0,max_temp):
+        sorted_items_template[template[i+1]] = template[i]
+
+    #print(sorted_items)
+    print(sorted_items_template)
+    #print(dict((v,k) for k,v in sorted_items_template.items()))
+
     if "property_name" in feelings_source and "dates" in feelings_source:
-        feeling_tags = dict(zip(feelings_source[::2], feelings_source[1::2]))
-        template_tags = dict(zip(template[::2], template[1::2]))
-        template_tags = dict((v,k) for k,v in template_tags.items())
-        print(feeling_tags.keys())
-        #print(template_tags.keys())
+        feeling_tags = sorted_items
+        template_tags = sorted_items_template
+        #feeling_tags = dict(zip(feelings_source[::2], feelings_source[1::2]))
+        #template_tags = dict(zip(template[::2], template[1::2]))
+        #template_tags = dict((v,k) for k,v in template_tags.items())
+        #print(sorted(feeling_tags.keys()))
+
+
         review = ""
         for item in feeling_tags:
             if item in template_tags:
