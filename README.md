@@ -29,14 +29,17 @@ Using natural language processing for smart review writing
 ```[({'contains(the)': True, 'contains(hotel)': True, 'contains(was)': True, 'contains(terrible)': True}, 'Conclusion')] ```
 * Construct the training and testing data by applying the feature extractor to each review text
 
-### Data descriptions
+### Data description
+
 The data at the first level is a Dictionary with two keys, reviews, and HotelInfo.
-The value of reviews is an array of reviews. Each array element is a dictionary. Keys are Ratings, AuthorLocation, Title, Author, ReviewID, Content and Date.
 
-The Ratings key has a dictionary as a value. The dictionary contains service, cleanliness, Overall, Value, Sleep Quality, Rooms and Location. 
+The value of the key reviews is an array of reviews where each array element is a dictionary. Each dictionary has keys Ratings, AuthorLocation, Title, Author, ReviewID, Content and Date.
 
-There are 12,774 hotels in this data.
+The Ratings key has a dictionary as a value. The dictionary contains service, cleanliness, Overall, Value, Sleep Quality, Rooms and Location. The other keys have string values.
 
+There are 12,774 hotels in this data set.
+
+#### Sample data
 ```
 {
    "Reviews":[
