@@ -2,7 +2,7 @@
 ## Objective
 Using natural language processing for smart review writing
 
-### Phase 1: Use a supervised classifier to automatically tag new reviews with the following category labels
+## Phase 1: Use a supervised classifier to automatically tag new reviews with the following category labels
 
 ```#reason#
 #dates#
@@ -22,12 +22,6 @@ Using natural language processing for smart review writing
 #value_for_money#
 #conclusion#
 ```
-
-### Details:
-* Build a feature set (from category labels) with feature names e.g. a feature name could be "conclusion" and the corresponding value "The hotel was terrible". Similar to [NPS chat corpus](https://catalog.ldc.upenn.edu/desc/addenda/LDC2010T05.xml)
-* An example using the above:
-```[({'contains(the)': True, 'contains(hotel)': True, 'contains(was)': True, 'contains(terrible)': True}, 'Conclusion')] ```
-* Construct the training and testing data by applying the feature extractor to each review text
 
 ### Data description
 
@@ -71,3 +65,26 @@ There are 12,774 hotels in this data set.
 
 }
 ```
+
+### Task details and tool selection :
+* We will need to thus identify the selection of the tool (PyTorch, NLTK etc.) and then decide how to tag the data while keeping in mind the tool we will use
+* We will need to build a feature set (from category labels) with feature names similar to [NPS chat corpus](https://catalog.ldc.upenn.edu/desc/addenda/LDC2010T05.xml)
+
+* NPS Chat corpus example:
+```<Post class="whQuestion" user="11-09-20sUser101">
+11-09-20sUser31 why arent you employed?
+<terminals>
+<t pos="NNP" word="11-09-20sUser31"/>
+<t pos="WRB" word="why"/>
+<t pos="VBP" word="arent"/>
+<t pos="PRP" word="you"/>
+<t pos="JJ" word="employed"/>
+<t pos="." word="?"/>
+</terminals>
+</Post>
+```
+* Our example:
+```
+[{tag="food",sentence="The buffet breakfast was amazing!"},{tag="conclusion",sentence="The hotel was terrible"}]
+```
+* Once this is done, we construct the training and testing data by applying the feature extractor to each review text
