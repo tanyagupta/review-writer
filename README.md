@@ -31,7 +31,7 @@ The value of the key reviews is an array of reviews where each array element is 
 
 The Ratings key has a dictionary as a value. The dictionary contains service, cleanliness, Overall, Value, Sleep Quality, Rooms and Location. The other keys have string values.
 
-There are 12,774 hotels in this data set.
+There are 12,774 hotels in this data set, with each hotel having around 10 reviews each.
 
 #### Sample data
 ```
@@ -70,22 +70,9 @@ There are 12,774 hotels in this data set.
 * We will need to thus identify the selection of the tool (PyTorch, NLTK etc.) and then decide how to tag the data while keeping in mind the tool we will use
 * We will need to build a feature set (from category labels) with feature names similar to [NPS chat corpus](https://catalog.ldc.upenn.edu/desc/addenda/LDC2010T05.xml)
 
-* NPS Chat corpus example:
-```
-<Post class="whQuestion" user="11-09-20sUser101">
-11-09-20sUser31 why arent you employed?
-<terminals>
-<t pos="NNP" word="11-09-20sUser31"/>
-<t pos="WRB" word="why"/>
-<t pos="VBP" word="arent"/>
-<t pos="PRP" word="you"/>
-<t pos="JJ" word="employed"/>
-<t pos="." word="?"/>
-</terminals>
-</Post>
-```
 * Our example:
 ```
 [{tag="food",sentence="The buffet breakfast was amazing!"},{tag="conclusion",sentence="The hotel was terrible"}]
 ```
 * Once this is done, we construct the training and testing data by applying the feature extractor to each review text
+* Each sentence will be tagged. This is a flat tagging, without any ontology or hierarchy.
