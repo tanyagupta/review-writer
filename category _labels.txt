@@ -1,0 +1,16 @@
+#dates#
+#duration#
+#expectation#
+#hotel_location#
+#staff_experience#
+#staff_name#
+#room_size#
+#room_location#
+#room_decor#
+#breakfast#
+#local_info#
+#early_check_in#
+#food#
+#minibar#
+#value_for_money#
+#conclusion#
