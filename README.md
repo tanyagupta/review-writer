@@ -71,7 +71,8 @@ There are 12,774 hotels in this data set.
 * We will need to build a feature set (from category labels) with feature names similar to [NPS chat corpus](https://catalog.ldc.upenn.edu/desc/addenda/LDC2010T05.xml)
 
 * NPS Chat corpus example:
-```<Post class="whQuestion" user="11-09-20sUser101">
+```
+<Post class="whQuestion" user="11-09-20sUser101">
 11-09-20sUser31 why arent you employed?
 <terminals>
 <t pos="NNP" word="11-09-20sUser31"/>
